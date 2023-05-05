@@ -1,5 +1,7 @@
 package com.everis.docker.app.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,9 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class OperarController {
+  
+  Logger log = LoggerFactory.getLogger(OperarController.class);
 
 	@GetMapping("/sumar/{number1}/{number2}")
 	public String sumar(@PathVariable Double number1, @PathVariable Double number2, Model model) {
+	  log.info("Sumar: {} + {}", number1, number2);
 		model.addAttribute("title", "Sumar");
 		model.addAttribute("result", number1 + number2);
 		return "result";
@@ -17,6 +22,7 @@ public class OperarController {
 	
 	@GetMapping("/restar/{number1}/{number2}")
 	public String restar(@PathVariable Double number1, @PathVariable Double number2, Model model) {
+	  log.info("Restar: {} + {}", number1, number2);
 		model.addAttribute("title", "Restar");
 		model.addAttribute("result", number1 - number2);
 		return "result";
@@ -24,6 +30,7 @@ public class OperarController {
 	
 	@GetMapping("/multiplicar/{number1}/{number2}")
 	public String multiplicar(@PathVariable Double number1, @PathVariable Double number2, Model model) {
+	  log.info("Multiplicar: {} + {}", number1, number2);
 		model.addAttribute("title", "Multiplicar");
 		model.addAttribute("result", number1 * number2);
 		return "result";
@@ -31,6 +38,10 @@ public class OperarController {
 	
 	@GetMapping("/dividir/{number1}/{number2}")
 	public String dividir(@PathVariable Double number1, @PathVariable Double number2, Model model) {
+	  log.info("Dividir: {} + {}", number1, number2);
+	  if (number2 == 0) {
+	    log.error("Multiplicar: El divisor no puede ser cero.");
+	  }
 		model.addAttribute("title", "Dividir");
 		model.addAttribute("result", number1 / number2);
 		return "result";
