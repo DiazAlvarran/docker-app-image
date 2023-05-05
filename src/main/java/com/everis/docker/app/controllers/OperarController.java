@@ -19,7 +19,7 @@ public class OperarController {
 	@GetMapping("/sumar/{number1}/{number2}")
 	public String sumar(@PathVariable Double number1, @PathVariable Double number2, Model model) {
 	  log.info("Sumar: {} + {}", number1, number2);
-		model.addAttribute("title", properties.getApplicationName().concat(" Sumar"));
+		model.addAttribute("title", properties.getApplicationName().concat(": Sumar"));
 		model.addAttribute("result", number1 + number2);
 		return "result";
 	}
@@ -27,7 +27,7 @@ public class OperarController {
 	@GetMapping("/restar/{number1}/{number2}")
 	public String restar(@PathVariable Double number1, @PathVariable Double number2, Model model) {
 	  log.info("Restar: {} - {}", number1, number2);
-	  model.addAttribute("title", properties.getApplicationName().concat(" Restar"));
+	  model.addAttribute("title", properties.getApplicationName().concat(": Restar"));
 		model.addAttribute("result", number1 - number2);
 		return "result";
 	}
@@ -35,7 +35,7 @@ public class OperarController {
 	@GetMapping("/multiplicar/{number1}/{number2}")
 	public String multiplicar(@PathVariable Double number1, @PathVariable Double number2, Model model) {
 	  log.info("Multiplicar: {} * {}", number1, number2);
-	  model.addAttribute("title", properties.getApplicationName().concat(" Multiplicar"));
+	  model.addAttribute("title", properties.getApplicationName().concat(": Multiplicar"));
 		model.addAttribute("result", number1 * number2);
 		return "result";
 	}
@@ -46,7 +46,7 @@ public class OperarController {
 	  if (number2 == 0) {
 	    log.error("Multiplicar: El divisor no puede ser cero.");
 	  }
-	  model.addAttribute("title", properties.getApplicationName().concat(" Dividir"));
+	  model.addAttribute("title", properties.getApplicationName().concat(": Dividir"));
 		model.addAttribute("result", number1 / number2);
 		return "result";
 	}
