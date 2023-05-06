@@ -18,7 +18,7 @@ public class OperarController {
 
 	@GetMapping("/sumar/{number1}/{number2}")
 	public String sumar(@PathVariable Double number1, @PathVariable Double number2, Model model) {
-	  log.info("Sumar: {} + {}", number1, number2);
+	  log.info("Sumar 2 numeros: {} + {}", number1, number2);
 		model.addAttribute("title", properties.getApplicationName().concat(": Sumar"));
 		model.addAttribute("result", number1 + number2);
 		return "result";
